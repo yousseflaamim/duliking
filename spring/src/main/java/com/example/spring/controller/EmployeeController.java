@@ -48,12 +48,14 @@ public class EmployeeController {
     @PostMapping("/login")
     public String loginSubmit(@RequestParam String email, @RequestParam String password, Model model) {
         Employee employee = employeeDAO.getEmployeeByEmailAndPassword(email, password);
-        if (employee != null) {
-            model.addAttribute("employee", employee);
-            return "redirect:/invoices";
-        } else {
+        if (employee == null) {
+           //
             model.addAttribute("message", "Invalid email or password.");
             return "login";
+
+        } else {
+            model.addAttribute("employee", employee);
+            return "redirect:/invoices";
         }
     }
 
@@ -67,7 +69,7 @@ public class EmployeeController {
     @GetMapping("/payment")
     public String paymentForm(Model model) {
         model.addAttribute("payment", new Payment());
-        return "payment";
+        return "edit";
     }
 
     @PostMapping("/payment")
@@ -78,7 +80,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/edit")
-    public String editForm(@RequestParam long id, Model model) {
+    public String editForm(@RequestParam int id, Model model) {
         Payment payment = paymentDAO.getPaymentById(id);
         model.addAttribute("payment", payment);
         return "edit";
@@ -91,9 +93,10 @@ public class EmployeeController {
     }
 
     @GetMapping("/delete")
-    public String deletePayment(@RequestParam long id) {
+    public String deletePayment(@RequestParam int id) {
         paymentDAO.deletePayment(id);
         return "redirect:/invoices";
     }
 }
+
 
