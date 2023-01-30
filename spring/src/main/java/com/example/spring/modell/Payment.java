@@ -1,24 +1,31 @@
 package com.example.spring.modell;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Data
 public class Payment {
-    private Long id;
+    private int id;
     private String title;
-    private LocalDate date;
+ //  @JsonFormat(pattern = "yyyy-MM-dd 'T' HH:mm",shape = JsonFormat.Shape.STRING)
+   // private Date date;
     private String description;
     private String category;
-    private BigDecimal amount;
+    private int amount;
 
-    public Long getId() {
+    private int employeeId;
+
+
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -30,13 +37,17 @@ public class Payment {
         this.title = title;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
+ //   public Date getDate() {
+     //   return date;
+   // }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
+  //  public void setDate(Date date) {
+   //     this.date = date;
+  //  }
+  public int getEmployeeId() {
+      return employeeId;
+  }
+
 
     public String getDescription() {
         return description;
@@ -54,11 +65,11 @@ public class Payment {
         this.category = category;
     }
 
-    public BigDecimal getAmount() {
+    public long getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
@@ -67,16 +78,17 @@ public class Payment {
         return "Payment{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", date=" + date +
+             //   ", date=" + date +
                 ", description='" + description + '\'' +
                 ", category='" + category + '\'' +
+                ",  employeeId='" +  employeeId + '\'' +
                 ", amount=" + amount +
+
                 '}';
     }
 
-    public void setEmployee(Employee principal) {
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public void setEmployeeId(int employee_id) {
-    }
 }
