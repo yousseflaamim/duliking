@@ -2,30 +2,44 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Invoices</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+  table, th, td {
+  border: 1px solid black;
+  }
+  body{
+    width: 600px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: greenyellow;
+  }
+  </style>
 </head>
 <body>
 <h1>Invoices</h1>
 <table>
   <tr>
-    <th>Title</th>
-    <th>Date</th>
-    <th>Description</th>
-    <th>Category</th>
-    <th>Amount</th>
-    <th>Actions</th>
+    <th>title</th>
+    <th>description</th>
+    <th>category</th>
+    <th>amount</th>
+    <th>Employee ID</th>
+
   </tr>
   <tr th:each="payment : ${payments}">
     <td th:text="${payment.title}"></td>
-    <td th:text="${payment.date}"></td>
     <td th:text="${payment.description}"></td>
     <td th:text="${payment.category}"></td>
     <td th:text="${payment.amount}"></td>
-    <td>
-      <a th:href="@{/edit(id=${payment.id})}">Edit</a>
-      <a th:href="@{/delete(id=${payment.id})}">Delete</a>
+    <td th:text="${payment.employeeId}"></td>
+
+      <a th:href="@{/edit(id=${payment.id})}" th:color="gren">Edit</a>
+      <a th:href="@{/delete(id=${payment.id})}" th:color="rad">Delete</a>
     </td>
   </tr>
 </table>
+
 <a th:href="@{/payment}">Add Payment</a>
 </body>
 </html>
