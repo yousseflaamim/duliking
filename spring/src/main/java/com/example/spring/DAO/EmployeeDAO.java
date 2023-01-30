@@ -11,13 +11,13 @@ import java.util.List;
 public interface EmployeeDAO  {
     public  void createEmployee(Employee employee);
 
-    public Employee getEmployeeById(Long id);
+    public Employee getEmployeeById(int id);
 
     public List<Employee> getAllEmployees();
 
     public void updateEmployee(Employee employee);
 
-    public void deleteEmployee(Long id);
+    public void deleteEmployee(int id);
 
     public Employee getEmployeeByEmailAndPassword(String email, String password) ;
 
