@@ -6,9 +6,8 @@ import java.util.List;
 
 public interface PaymentDAO {
     public void createPayment(Payment payment);
-    public Payment getPaymentById(Long id);
+    public Payment getPaymentById(int id);
     public List<Payment> getAllPayments();
     public void updatePayment(Payment payment);
-    public void deletePayment(Long id);
+    public void deletePayment(int id);
 }
-
